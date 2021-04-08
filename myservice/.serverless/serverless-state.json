@@ -181,7 +181,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/myservice/dev/1617877912451-2021-04-08T10:31:52.451Z/myservice.zip"
+                "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
               },
               "Handler": "bin/hello",
               "Runtime": "go1.x",
@@ -206,7 +206,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/myservice/dev/1617877912451-2021-04-08T10:31:52.451Z/myservice.zip"
+                "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
               },
               "Handler": "bin/world",
               "Runtime": "go1.x",
@@ -601,7 +601,7 @@
           "./bin/**"
         ],
         "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/myservice/.serverless/myservice.zip",
-        "artifactDirectoryName": "serverless/myservice/dev/1617877912451-2021-04-08T10:31:52.451Z"
+        "artifactDirectoryName": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -611,7 +611,7 @@
     "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/myservice/.serverless/myservice.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/myservice/dev/1617877912451-2021-04-08T10:31:52.451Z",
+    "artifactDirectoryName": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z",
     "artifact": "myservice.zip"
   }
 }

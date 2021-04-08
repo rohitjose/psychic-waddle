@@ -51,7 +51,8 @@ Serverless: Checking Stack update progress...
 ```
 ### Testing 
 ```
-curl -X POST https://x8pzu5jbh3.execute-api.ap-southeast-2.amazonaws.com//dev/hello -d 'Hello, world!'
+curl -X GET https://cm7di14fm8.execute-api.ap-southeast-2.amazonaws.com/hello 
+curl -X GET https://cm7di14fm8.execute-api.ap-southeast-2.amazonaws.com/world
 ```
 
 ### Cleanup
