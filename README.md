@@ -7,7 +7,7 @@ Codebase for production ready serverless course
  - Install serverless framework
  - Setup go-serverless boilerplate code
   ```
-  serverless create -t aws-go-dep -p myservice
+  serverless create -t aws-go-mod -p myservice
   ```
 ### AWS Configuration for Serverless Framework
  - Setup new IAM user with Administrator access. This is done during the development stage. After an initial deployment the Cloudformation template can be analysed to define a Policy document of a more limited permissions.
@@ -30,8 +30,11 @@ sls deploy
 ```
 Output snippet:
 ```
-➜  myservice git:(init-setup) ✗ make
-dep ensure -v
+go mod download github.com/aws/aws-lambda-go
+➜  myservice git:(new-template) ✗ make
+chmod u+x gomod.sh
+./gomod.sh
+export GO111MODULE=on
 env GOOS=linux go build -ldflags="-s -w" -o bin/hello hello/main.go
 env GOOS=linux go build -ldflags="-s -w" -o bin/world world/main.go
 ➜ myservice git:(init-setup) ✗ sls deploy

@@ -167,7 +167,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
+          "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
         },
         "Handler": "bin/hello",
         "Runtime": "go1.x",
@@ -192,7 +192,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
+          "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
         },
         "Handler": "bin/world",
         "Runtime": "go1.x",
@@ -210,24 +210,24 @@
         "WorldLogGroup"
       ]
     },
-    "HelloLambdaVersionqR28EfE2UnvhzBqizle6W6IvWCIerB82mQSXuWUxCM": {
+    "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "zH4Xd27AwnVS7zw7UCQT6lDAciuOjZhHBOeqKzPIhss="
+        "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
       }
     },
-    "WorldLambdaVersionC9MlgyQbUswrxB1fXMoOCJACaHeyiJ6XiLo6Sc": {
+    "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WorldLambdaFunction"
         },
-        "CodeSha256": "zH4Xd27AwnVS7zw7UCQT6lDAciuOjZhHBOeqKzPIhss="
+        "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
       }
     },
     "HttpApi": {
@@ -410,13 +410,13 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionqR28EfE2UnvhzBqizle6W6IvWCIerB82mQSXuWUxCM"
+        "Ref": "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0"
       }
     },
     "WorldLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WorldLambdaVersionC9MlgyQbUswrxB1fXMoOCJACaHeyiJ6XiLo6Sc"
+        "Ref": "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4"
       }
     },
     "HttpApiId": {

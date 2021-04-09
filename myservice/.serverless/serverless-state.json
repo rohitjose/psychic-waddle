@@ -9,8 +9,8 @@
       "runtime": "go1.x",
       "lambdaHashingVersion": "20201221",
       "stage": "dev",
-      "region": "ap-southeast-2",
       "variableSyntax": "\\${([^{}:]+?(?:\\(|:)(?:[^:{}][^{}]*?)?)}",
+      "region": "us-east-1",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -181,7 +181,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
+                "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
               },
               "Handler": "bin/hello",
               "Runtime": "go1.x",
@@ -206,7 +206,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z/myservice.zip"
+                "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
               },
               "Handler": "bin/world",
               "Runtime": "go1.x",
@@ -224,24 +224,24 @@
               "WorldLogGroup"
             ]
           },
-          "HelloLambdaVersionqR28EfE2UnvhzBqizle6W6IvWCIerB82mQSXuWUxCM": {
+          "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "zH4Xd27AwnVS7zw7UCQT6lDAciuOjZhHBOeqKzPIhss="
+              "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
             }
           },
-          "WorldLambdaVersionC9MlgyQbUswrxB1fXMoOCJACaHeyiJ6XiLo6Sc": {
+          "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WorldLambdaFunction"
               },
-              "CodeSha256": "zH4Xd27AwnVS7zw7UCQT6lDAciuOjZhHBOeqKzPIhss="
+              "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
             }
           },
           "HttpApi": {
@@ -418,13 +418,13 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersionqR28EfE2UnvhzBqizle6W6IvWCIerB82mQSXuWUxCM"
+              "Ref": "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0"
             }
           },
           "WorldLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WorldLambdaVersionC9MlgyQbUswrxB1fXMoOCJACaHeyiJ6XiLo6Sc"
+              "Ref": "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4"
             }
           },
           "HttpApiId": {
@@ -561,7 +561,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionqR28EfE2UnvhzBqizle6W6IvWCIerB82mQSXuWUxCM"
+        "versionLogicalId": "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0"
       },
       "world": {
         "handler": "bin/world",
@@ -581,7 +581,7 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "WorldLambdaVersionC9MlgyQbUswrxB1fXMoOCJACaHeyiJ6XiLo6Sc"
+        "versionLogicalId": "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4"
       }
     },
     "configValidationMode": "warn",
@@ -601,7 +601,7 @@
           "./bin/**"
         ],
         "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/myservice/.serverless/myservice.zip",
-        "artifactDirectoryName": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z"
+        "artifactDirectoryName": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -611,7 +611,7 @@
     "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/myservice/.serverless/myservice.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/myservice/dev/1617878886702-2021-04-08T10:48:06.702Z",
+    "artifactDirectoryName": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z",
     "artifact": "myservice.zip"
   }
 }
