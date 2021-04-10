@@ -14,3 +14,6 @@ deploy: clean build
 gomodgen:
 	chmod u+x gomod.sh
 	./gomod.sh
+
+teardown:
+	sls remove --verbose
