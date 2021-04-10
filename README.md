@@ -71,3 +71,10 @@ Serverless: Stack delete finished...
 
 Serverless: Stack delete finished...
 ```
+
+## Simple JSON Service
+
+[Reference|https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72]
+
+Build an API which I can provide a search string and then have one or more applicable emojis returned.
+
