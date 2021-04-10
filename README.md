@@ -74,7 +74,14 @@ Serverless: Stack delete finished...
 
 ## Simple JSON Service
 
-[Reference|https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72]
+[Reference](https://medium.com/@kaperys/an-introduction-to-serverless-go-applications-using-aws-a258bc2a7b72)
 
 Build an API which I can provide a search string and then have one or more applicable emojis returned.
+
+### Testing
+
+```
+curl -X GET https://qzb62hmld1.execute-api.us-east-1.amazonaws.com/emoji?search=dog
+curl -X GET https://qzb62hmld1.execute-api.us-east-1.amazonaws.com/emoji?search=monkey
+```
 

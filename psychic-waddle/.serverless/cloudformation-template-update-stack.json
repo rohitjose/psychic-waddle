@@ -74,13 +74,19 @@
     "HelloLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/myservice-dev-hello"
+        "LogGroupName": "/aws/lambda/psychic-waddle-dev-hello"
       }
     },
     "WorldLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/myservice-dev-world"
+        "LogGroupName": "/aws/lambda/psychic-waddle-dev-world"
+      }
+    },
+    "EmojiLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/psychic-waddle-dev-emoji"
       }
     },
     "IamRoleLambdaExecution": {
@@ -108,7 +114,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "myservice",
+                  "psychic-waddle",
                   "dev",
                   "lambda"
                 ]
@@ -125,7 +131,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/myservice-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/psychic-waddle-dev*:*"
                     }
                   ]
                 },
@@ -136,7 +142,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/myservice-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/psychic-waddle-dev*:*:*"
                     }
                   ]
                 }
@@ -149,7 +155,7 @@
           "Fn::Join": [
             "-",
             [
-              "myservice",
+              "psychic-waddle",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -167,11 +173,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
+          "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
         },
         "Handler": "bin/hello",
         "Runtime": "go1.x",
-        "FunctionName": "myservice-dev-hello",
+        "FunctionName": "psychic-waddle-dev-hello",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -192,11 +198,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/myservice/dev/1617967165076-2021-04-09T11:19:25.076Z/myservice.zip"
+          "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
         },
         "Handler": "bin/world",
         "Runtime": "go1.x",
-        "FunctionName": "myservice-dev-world",
+        "FunctionName": "psychic-waddle-dev-world",
         "MemorySize": 1024,
         "Timeout": 6,
         "Role": {
@@ -210,30 +216,70 @@
         "WorldLogGroup"
       ]
     },
-    "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0": {
+    "EmojiLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
+        },
+        "Handler": "bin/emoji",
+        "Runtime": "go1.x",
+        "FunctionName": "psychic-waddle-dev-emoji",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "SOURCE_URL": "https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "EmojiLogGroup"
+      ]
+    },
+    "HelloLambdaVersionXKeC3uKVg0plCozncpuNLDxCaMQrNzqvi40CnxDkJw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
+        "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
       }
     },
-    "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4": {
+    "WorldLambdaVersionOtd1MKDzb2yqIqKbE0VkelTR7RZUyFMhg37SwJyIo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WorldLambdaFunction"
         },
-        "CodeSha256": "uwfbXX6gX3JjDVERgguJ+9jFafL9DJVdb1+PImCi18A="
+        "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
+      }
+    },
+    "EmojiLambdaVersionRLnmVmBsfp1dKiYHwDDCYTpRvpRLZJmE8lPiFa8KTSo": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "EmojiLambdaFunction"
+        },
+        "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
       }
     },
     "HttpApi": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
-        "Name": "dev-myservice",
+        "Name": "dev-psychic-waddle",
         "ProtocolType": "HTTP"
       }
     },
@@ -399,6 +445,81 @@
         }
       },
       "DependsOn": "HttpApiIntegrationWorld"
+    },
+    "EmojiLambdaPermissionHttpApi": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "EmojiLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "HttpApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "HttpApiIntegrationEmoji": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "EmojiLambdaFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 6500
+      }
+    },
+    "HttpApiRouteGetEmoji": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "GET /emoji",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationEmoji"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationEmoji"
     }
   },
   "Outputs": {
@@ -410,13 +531,19 @@
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionL98LBxE2C9EgGSZ8mkar3aHARWPnQRzMl6ULLlzYxc0"
+        "Ref": "HelloLambdaVersionXKeC3uKVg0plCozncpuNLDxCaMQrNzqvi40CnxDkJw"
       }
     },
     "WorldLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WorldLambdaVersiony2DwJcGvE8xUklInIQCFgIltDZpTUYKOXwcqBBetJ4"
+        "Ref": "WorldLambdaVersionOtd1MKDzb2yqIqKbE0VkelTR7RZUyFMhg37SwJyIo"
+      }
+    },
+    "EmojiLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "EmojiLambdaVersionRLnmVmBsfp1dKiYHwDDCYTpRvpRLZJmE8lPiFa8KTSo"
       }
     },
     "HttpApiId": {
