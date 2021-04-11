@@ -1,4 +1,4 @@
-module github.com/psychic-waddle/myservice
+module github.com/psychic-waddle
 
 go 1.16
 
