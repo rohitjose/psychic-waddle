@@ -37,6 +37,18 @@ func TestHandlerFailEmojiDoesNotExist(t *testing.T) {
 	}
 }
 
+func TestHandlerFailNoRouteToHost(t *testing.T) {
+	res, _ := handler(events.APIGatewayProxyRequest{QueryStringParameters: map[string]string{searchKey: "dummy-emoji"}})
+	if res.StatusCode == http.StatusOK {
+		t.Fatalf("TestHandlerFailNoRouteToHost failed: expected an error")
+	}
+
+	x := "could not retrieve emoji data: could not make the request: Get \"http://127.0.0.1:9294\": dial tcp 127.0.0.1:9294: connect: connection refused"
+	if v := res.Body; v != x {
+		t.Fatalf("TestHandlerFailNoRouteToHost failed: have %q, want %q", v, x)
+	}
+}
+
 func setup(t *testing.T, body string) *httptest.Server {
 	os.Setenv("SOURCE_URL", "http://"+mockServerURL)
 
