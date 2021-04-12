@@ -18,3 +18,9 @@ gomodgen:
 
 teardown:
 	sls remove --verbose
+
+test:
+	go test ./... -cover
+
+test-report:
+	go test -coverprofile=coverage.out ./... && go tool cover -html=coverage.out
