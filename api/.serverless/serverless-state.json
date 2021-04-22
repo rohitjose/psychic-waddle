@@ -85,22 +85,16 @@
               }
             }
           },
-          "HelloLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/psychic-waddle-dev-hello"
-            }
-          },
-          "WorldLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/psychic-waddle-dev-world"
-            }
-          },
           "EmojiLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
               "LogGroupName": "/aws/lambda/psychic-waddle-dev-emoji"
+            }
+          },
+          "PeopleLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/psychic-waddle-dev-people"
             }
           },
           "IamRoleLambdaExecution": {
@@ -180,56 +174,6 @@
               }
             }
           },
-          "HelloLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
-              },
-              "Handler": "bin/hello",
-              "Runtime": "go1.x",
-              "FunctionName": "psychic-waddle-dev-hello",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "HelloLogGroup"
-            ]
-          },
-          "WorldLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
-              },
-              "Handler": "bin/world",
-              "Runtime": "go1.x",
-              "FunctionName": "psychic-waddle-dev-world",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "WorldLogGroup"
-            ]
-          },
           "EmojiLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
@@ -237,7 +181,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z/psychic-waddle.zip"
+                "S3Key": "serverless/psychic-waddle/dev/1619078864026-2021-04-22T08:07:44.026Z/psychic-waddle.zip"
               },
               "Handler": "bin/emoji",
               "Runtime": "go1.x",
@@ -260,34 +204,49 @@
               "EmojiLogGroup"
             ]
           },
-          "HelloLambdaVersionXKeC3uKVg0plCozncpuNLDxCaMQrNzqvi40CnxDkJw": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
+          "PeopleLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
             "Properties": {
-              "FunctionName": {
-                "Ref": "HelloLambdaFunction"
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/psychic-waddle/dev/1619078864026-2021-04-22T08:07:44.026Z/psychic-waddle.zip"
               },
-              "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
-            }
+              "Handler": "bin/people",
+              "Runtime": "go1.x",
+              "FunctionName": "psychic-waddle-dev-people",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "PeopleLogGroup"
+            ]
           },
-          "WorldLambdaVersionOtd1MKDzb2yqIqKbE0VkelTR7RZUyFMhg37SwJyIo": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "WorldLambdaFunction"
-              },
-              "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
-            }
-          },
-          "EmojiLambdaVersionRLnmVmBsfp1dKiYHwDDCYTpRvpRLZJmE8lPiFa8KTSo": {
+          "EmojiLambdaVersionxgSdqL5mzCZ8XV3Mbjv4KrRXjFzFCT6hyYmUSm0n70": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "EmojiLambdaFunction"
               },
-              "CodeSha256": "6h+ykW9q7m6Zci/mbWVuONp22q4xZuegaOFFz2CRygc="
+              "CodeSha256": "hkMeiz7LISh1jdzCnZ09NAUXwrnnHLLGONLnlP4yqjY="
+            }
+          },
+          "PeopleLambdaVersion2hgnYPPWAX9N5mihfzYtQaMx5EzgvPlzpXYb8qmWT0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "PeopleLambdaFunction"
+              },
+              "CodeSha256": "hkMeiz7LISh1jdzCnZ09NAUXwrnnHLLGONLnlP4yqjY="
             }
           },
           "HttpApi": {
@@ -309,150 +268,6 @@
                 "DetailedMetricsEnabled": false
               }
             }
-          },
-          "HelloLambdaPermissionHttpApi": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "HelloLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "HttpApi"
-                    },
-                    "/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "HttpApiIntegrationHello": {
-            "Type": "AWS::ApiGatewayV2::Integration",
-            "Properties": {
-              "ApiId": {
-                "Ref": "HttpApi"
-              },
-              "IntegrationType": "AWS_PROXY",
-              "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"HelloLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
-              },
-              "PayloadFormatVersion": "2.0",
-              "TimeoutInMillis": 6500
-            }
-          },
-          "HttpApiRouteGetHello": {
-            "Type": "AWS::ApiGatewayV2::Route",
-            "Properties": {
-              "ApiId": {
-                "Ref": "HttpApi"
-              },
-              "RouteKey": "GET /hello",
-              "Target": {
-                "Fn::Join": [
-                  "/",
-                  [
-                    "integrations",
-                    {
-                      "Ref": "HttpApiIntegrationHello"
-                    }
-                  ]
-                ]
-              }
-            },
-            "DependsOn": "HttpApiIntegrationHello"
-          },
-          "WorldLambdaPermissionHttpApi": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "WorldLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition"
-                    },
-                    ":execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "HttpApi"
-                    },
-                    "/*"
-                  ]
-                ]
-              }
-            }
-          },
-          "HttpApiIntegrationWorld": {
-            "Type": "AWS::ApiGatewayV2::Integration",
-            "Properties": {
-              "ApiId": {
-                "Ref": "HttpApi"
-              },
-              "IntegrationType": "AWS_PROXY",
-              "IntegrationUri": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"WorldLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
-              },
-              "PayloadFormatVersion": "2.0",
-              "TimeoutInMillis": 6500
-            }
-          },
-          "HttpApiRouteGetWorld": {
-            "Type": "AWS::ApiGatewayV2::Route",
-            "Properties": {
-              "ApiId": {
-                "Ref": "HttpApi"
-              },
-              "RouteKey": "GET /world",
-              "Target": {
-                "Fn::Join": [
-                  "/",
-                  [
-                    "integrations",
-                    {
-                      "Ref": "HttpApiIntegrationWorld"
-                    }
-                  ]
-                ]
-              }
-            },
-            "DependsOn": "HttpApiIntegrationWorld"
           },
           "EmojiLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
@@ -525,6 +340,78 @@
               }
             },
             "DependsOn": "HttpApiIntegrationEmoji"
+          },
+          "PeopleLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "PeopleLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationPeople": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"PeopleLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 6500
+            }
+          },
+          "HttpApiRoutePostPeople": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "POST /people",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationPeople"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationPeople"
           }
         },
         "Outputs": {
@@ -533,22 +420,16 @@
               "Ref": "ServerlessDeploymentBucket"
             }
           },
-          "HelloLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "HelloLambdaVersionXKeC3uKVg0plCozncpuNLDxCaMQrNzqvi40CnxDkJw"
-            }
-          },
-          "WorldLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "WorldLambdaVersionOtd1MKDzb2yqIqKbE0VkelTR7RZUyFMhg37SwJyIo"
-            }
-          },
           "EmojiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "EmojiLambdaVersionRLnmVmBsfp1dKiYHwDDCYTpRvpRLZJmE8lPiFa8KTSo"
+              "Ref": "EmojiLambdaVersionxgSdqL5mzCZ8XV3Mbjv4KrRXjFzFCT6hyYmUSm0n70"
+            }
+          },
+          "PeopleLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "PeopleLambdaVersion2hgnYPPWAX9N5mihfzYtQaMx5EzgvPlzpXYb8qmWT0"
             }
           },
           "HttpApiId": {
@@ -667,46 +548,6 @@
     },
     "pluginsData": {},
     "functions": {
-      "hello": {
-        "handler": "bin/hello",
-        "events": [
-          {
-            "httpApi": {
-              "path": "/hello",
-              "method": "get"
-            },
-            "resolvedMethod": "GET",
-            "resolvedPath": "/hello"
-          }
-        ],
-        "name": "psychic-waddle-dev-hello",
-        "package": {},
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "go1.x",
-        "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionXKeC3uKVg0plCozncpuNLDxCaMQrNzqvi40CnxDkJw"
-      },
-      "world": {
-        "handler": "bin/world",
-        "events": [
-          {
-            "httpApi": {
-              "path": "/world",
-              "method": "get"
-            },
-            "resolvedMethod": "GET",
-            "resolvedPath": "/world"
-          }
-        ],
-        "name": "psychic-waddle-dev-world",
-        "package": {},
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "go1.x",
-        "vpc": {},
-        "versionLogicalId": "WorldLambdaVersionOtd1MKDzb2yqIqKbE0VkelTR7RZUyFMhg37SwJyIo"
-      },
       "emoji": {
         "handler": "bin/emoji",
         "events": [
@@ -728,7 +569,27 @@
         "timeout": 6,
         "runtime": "go1.x",
         "vpc": {},
-        "versionLogicalId": "EmojiLambdaVersionRLnmVmBsfp1dKiYHwDDCYTpRvpRLZJmE8lPiFa8KTSo"
+        "versionLogicalId": "EmojiLambdaVersionxgSdqL5mzCZ8XV3Mbjv4KrRXjFzFCT6hyYmUSm0n70"
+      },
+      "people": {
+        "handler": "bin/people",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/people",
+              "method": "post"
+            },
+            "resolvedMethod": "POST",
+            "resolvedPath": "/people"
+          }
+        ],
+        "name": "psychic-waddle-dev-people",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "go1.x",
+        "vpc": {},
+        "versionLogicalId": "PeopleLambdaVersion2hgnYPPWAX9N5mihfzYtQaMx5EzgvPlzpXYb8qmWT0"
       }
     },
     "configValidationMode": "warn",
@@ -747,18 +608,18 @@
           "!./**",
           "./bin/**"
         ],
-        "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/psychic-waddle/.serverless/psychic-waddle.zip",
-        "artifactDirectoryName": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z"
+        "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/api/.serverless/psychic-waddle.zip",
+        "artifactDirectoryName": "serverless/psychic-waddle/dev/1619078864026-2021-04-22T08:07:44.026Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
       }
     },
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/psychic-waddle/.serverless/psychic-waddle.zip"
+    "artifact": "/Users/rohitjose/go/src/github.com/psychic-waddle/api/.serverless/psychic-waddle.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/psychic-waddle/dev/1618046930337-2021-04-10T09:28:50.337Z",
+    "artifactDirectoryName": "serverless/psychic-waddle/dev/1619078864026-2021-04-22T08:07:44.026Z",
     "artifact": "psychic-waddle.zip"
   }
 }

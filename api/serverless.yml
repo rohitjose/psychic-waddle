@@ -20,3 +20,9 @@ functions:
           method: get
     environment:
       SOURCE_URL: https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json
+  people:
+    handler: bin/people
+    events:
+      - httpApi:
+          path: /people
+          method: post

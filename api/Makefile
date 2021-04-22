@@ -4,7 +4,8 @@ build: gomodgen
 	export GO111MODULE=on
 	env GOOS=linux go build -ldflags="-s -w" -o bin/hello hello/main.go
 	env GOOS=linux go build -ldflags="-s -w" -o bin/world world/main.go
-	env GOOS=linux go build -ldflags="-s -w" -o bin/emoji emoji/main.go
+	env GOOS=linux go build -ldflags="-s -w" -o bin/emoji emoji/*
+	env GOOS=linux go build -ldflags="-s -w" -o bin/people people/main.go
 
 clean:
 	rm -rf ./bin ./vendor go.sum

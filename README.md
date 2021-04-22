@@ -85,3 +85,10 @@ curl -X GET https://qzb62hmld1.execute-api.us-east-1.amazonaws.com/emoji?search=
 curl -X GET https://qzb62hmld1.execute-api.us-east-1.amazonaws.com/emoji?search=monkey
 ```
 
+## Adding GraphQL service call
+```
+curl --request POST \
+  --url https://b10mhr9dl9.execute-api.us-east-1.amazonaws.com/people \
+  --header 'Content-Type: application/json' \
+  --data '{"query":"{\n  person(id: 1000) {\n    id\n    firstName\n    lastName\n  }\n}\n"}'
+```
